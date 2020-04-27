@@ -40,10 +40,15 @@ gcloud beta builds triggers create github \
 # Obtain the numeric project ID
 # Use: gcloud projects list --filter="$(gcloud config get-value project)" --format="value(PROJECT_NUMBER)"
 
-# Grant limited access to Cloud Build to deploy to a Cloud Run
+# Grant the Cloud Run Admin role
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member "serviceAccount:PROJECT_NUMBER@cloudbuild.gserviceaccount.com" \
+  --role roles/run.admin
+
+# Grant access to Cloud Build to deploy to Cloud Run
 gcloud iam service-accounts add-iam-policy-binding \
-  PROJECT_ID-compute@developer.gserviceaccount.com \
-  --member="serviceAccount:PROJECT_ID@cloudbuild.gserviceaccount.com" \
+  PROJECT_NUMBER-compute@developer.gserviceaccount.com \
+  --member="serviceAccountNUMBER@cloudbuild.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 ```
 
