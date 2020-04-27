@@ -1,0 +1,22 @@
+ steps:
+ # build the container image
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/docker-repository/sapper-on-cloud-run:$COMMIT_SHA', '.']
+ # push the container image to Artifact Registry
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/docker-repository/sapper-on-cloud-run:$COMMIT_SHA']
+ # Deploy container image to Cloud Run
+ - name: 'gcr.io/cloud-builders/gcloud'
+   args:
+   - 'run'
+   - 'deploy'
+   - 'sapper-on-cloud-run'
+   - '--image'
+   - 'us-central1-docker.pkg.dev/$PROJECT_ID/docker-repository/sapper-on-cloud-run:$COMMIT_SHA'
+   - '--region'
+   - 'us-central1'
+   - '--platform'
+   - 'managed'
+   - '--allow-unauthenticated'
+ images:
+ - 'us-central1-docker.pkg.dev/$PROJECT_ID/docker-repository/sapper-on-cloud-run:$COMMIT_SHA'
