@@ -3,6 +3,8 @@
 # sapper-on-cloud-run
 A boilerplate to deploy Sapper (Svelte) applications to Cloud Run (https://cloud.run)
 
+A demo is available at https://sapper-on-cloud-run.mikenikles.com/.
+
 ## Docker local testing
 
 The following NPM scripts assist with testing the container image locally:
