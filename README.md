@@ -34,6 +34,19 @@ gcloud beta builds triggers create github \
 --build-config=cloudbuild.yaml
 ```
 
+## Set up Cloud Run
+
+```sh
+# Obtain the numeric project ID
+# Use: gcloud projects list --filter="$(gcloud config get-value project)" --format="value(PROJECT_NUMBER)"
+
+# Grant limited access to Cloud Build to deploy to a Cloud Run
+gcloud iam service-accounts add-iam-policy-binding \
+  PROJECT_ID-compute@developer.gserviceaccount.com \
+  --member="serviceAccount:PROJECT_ID@cloudbuild.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
+```
+
 ## Deploy to Cloud Run
 
 Cloud Run (https://cloud.run) is a fully managed serverless compute platform that automatically
