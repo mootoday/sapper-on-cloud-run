@@ -1,19 +1,19 @@
 # This stage builds the sapper application.
-FROM mhart/alpine-node:14 AS build-app
+FROM mhart/alpine-node:12 AS build-app
 WORKDIR /app
 COPY . .
 RUN npm install --no-audit --unsafe-perm
 RUN npm run build
 
 # This stage installs the runtime dependencies.
-FROM mhart/alpine-node:14 AS build-runtime
+FROM mhart/alpine-node:12 AS build-runtime
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --production --unsafe-perm
 
 # This stage only needs the compiled Sapper application
 # and the runtime dependencies.
-FROM mhart/alpine-node:slim-14
+FROM mhart/alpine-node:slim-12
 WORKDIR /app
 COPY --from=build-app /app/__sapper__ ./__sapper__
 COPY --from=build-app /app/static ./static
