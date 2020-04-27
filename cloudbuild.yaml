@@ -17,5 +17,6 @@
    - 'us-central1'
    - '--platform'
    - 'managed'
+   - '--allow-unauthenticated'
  images:
  - 'us-central1-docker.pkg.dev/$PROJECT_ID/docker-repository/sapper-on-cloud-run:$COMMIT_SHA'
