@@ -63,3 +63,19 @@ The continuous deployment pipeline works as follows:
     1. Build the docker image
     1. Push the docker image to [Artifact Registry](https://cloud.google.com/artifact-registry)
     1. Deploy the image to [Cloud Run](https://cloud.google.com/run)
+
+### Mapping a custom domain
+
+Details on how to verify a domain can be found [in the documentation](https://cloud.google.com/run/docs/mapping-custom-domains).
+
+Once a domain is verified, the following command maps it to a Cloud Run service:
+
+```sh
+gcloud beta run domain-mappings create \
+  --service sapper-on-cloud-run \
+  --domain sapper-on-cloud-run.mikenikles.com \
+  --region us-central1 \
+  --platform managed
+```
+
+Add a CNAME record with name `sapper-on-cloud-run` and contents `ghs.googlehosted.com` to your DNS.
