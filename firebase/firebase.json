@@ -5,6 +5,7 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "predeploy": "rm -fr ./public && cp -r ../static ./public"
   }
 }
