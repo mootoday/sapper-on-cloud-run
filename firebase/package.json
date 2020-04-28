@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "firebase:login": "firebase login"
+    "firebase:login": "firebase login",
+    "deploy": "firebase deploy"
   },
   "author": "Mike Nikles, @mikenikles",
   "license": "ISC",
