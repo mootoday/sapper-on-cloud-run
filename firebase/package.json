@@ -1,0 +1,16 @@
+{
+  "name": "firebase",
+  "version": "1.0.0",
+  "description": "The Firebase configuration to host Sapper static assets on Firebase Hosting.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "firebase:login": "firebase login",
+    "deploy": "firebase deploy"
+  },
+  "author": "Mike Nikles, @mikenikles",
+  "license": "ISC",
+  "devDependencies": {
+    "firebase-tools": "^8.2.0"
+  }
+}

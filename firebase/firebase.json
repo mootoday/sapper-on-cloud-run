@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "predeploy": "rm -fr ./public && cp -r ../static ./public",
+    "rewrites": [{
+      "source": "**",
+      "run": {
+        "serviceId": "sapper-on-cloud-run",
+        "region": "us-central1"
+      }
+    }]
+  }
+}
