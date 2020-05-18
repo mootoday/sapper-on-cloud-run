@@ -57,7 +57,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 # Grant access to Cloud Build to deploy to Cloud Run
 gcloud iam service-accounts add-iam-policy-binding \
   PROJECT_NUMBER-compute@developer.gserviceaccount.com \
-  --member="serviceAccountNUMBER@cloudbuild.gserviceaccount.com" \
+  --member="serviceAccount:PROJECT_NUMBER@cloudbuild.gserviceaccount.com" \
   --role="roles/iam.serviceAccountUser"
 ```
 
