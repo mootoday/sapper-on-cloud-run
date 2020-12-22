@@ -61,6 +61,12 @@ gcloud iam service-accounts add-iam-policy-binding \
   --role="roles/iam.serviceAccountUser"
 ```
 
+*Note:* If you have not enabled compute engine, you will see an error like: 
+
+> Gaia id not found for email PROJECT_NUMBER-compute@developer.gserviceaccount.com
+
+_where PROJECT_NUMBER is the actual number. To solve this, simply visit the compute engine service and allow the initial setup to complete. This will create the service account called PROJECT_NUMBER-compute@developer.gserviceaccount.com and after that, the iam command will run successfully._
+
 ## Deploy to Cloud Run
 
 Cloud Run (https://cloud.run) is a fully managed serverless compute platform that automatically
